@@ -1,0 +1,325 @@
+body {
+    background: #fafbfc;
+    color: #212529;
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background: #fff;
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 36px 0 24px;
+    height: 68px;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-app {
+    width: 32px;
+    height: 32px;
+    color: #2a63fa;
+    margin-right: 10px;
+  }
+  
+  .logo-text {
+    font-weight: 600;
+    font-size: 1.45rem;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  
+  .user-welcome {
+    color: #60677a;
+    font-size: 0.98rem;
+    margin-right: 6px;
+  }
+  
+  .logout-btn {
+    background: none;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 17px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .logout-btn:hover {
+    background: #f5f7fa;
+  }
+  
+  .logout-icon {
+    width: 20px;
+    height: 20px;
+    color: #60677a;
+  }
+  
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 32px 2vw 0 2vw;
+  }
+  
+  /*** TABS NAVIGATION ***/
+  .tabs-nav {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f5f7fa;
+    border: 1px solid #e7e9ed;
+    margin-bottom: 32px;
+    height: 48px;
+    box-sizing: border-box;
+  }
+  
+  .tab-btn {
+    flex: 1 1 0;
+    width: 0;
+    background: none;
+    border: none;
+    font-size: 1.06rem;
+    color: #60677a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    height: 48px;
+    cursor: pointer;
+    font-family: inherit;
+    outline: none;
+    transition: background 0.15s, color 0.15s;
+    position: relative;
+  }
+  
+  .tab-btn + .tab-btn {
+    border-left: 1px solid #e7e9ed;
+  }
+  
+  .tab-btn:hover, .tab-btn:focus {
+    background: #f0f4fa;
+    color: #2a63fa;
+  }
+  
+  .tab-btn-active, .tab-btn.tab-btn-active {
+    background: #fff;
+    color: #2a63fa;
+    z-index: 1;
+    box-shadow: 0 2px 8px 0 #e6ecfa;
+    border-bottom: 2.5px solid #2a63fa;
+    font-weight: 600;
+  }
+  
+  .tab-icon {
+    width: 19px;
+    height: 19px;
+    color: inherit;
+  }
+  
+  /*** END TABS NAVIGATION ***/
+  
+  .dashboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  
+  .dashboard-desc {
+    font-size: 1.12rem;
+    color: #60677a;
+    margin-bottom: 24px;
+  }
+  
+  .dashboard-main {
+    display: flex;
+    gap: 28px;
+    margin-top: 16px;
+  }
+  
+  .charts-list {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 2px 0 #ececec;
+    padding: 26px 22px 26px 22px;
+    width: 370px;
+    min-width: 290px;
+    border: 1px solid #e7e9ed;
+  }
+  
+  .charts-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  
+  .charts-desc {
+    color: #878fa3;
+    font-size: 0.98rem;
+    margin-bottom: 14px;
+  }
+  
+  .chart-card {
+    border: 1.5px solid #f1f4f9;
+    background: #fafdff;
+    border-radius: 12px;
+    padding: 18px 16px 11px 16px;
+    margin-bottom: 16px;
+    position: relative;
+    min-height: 85px;
+    transition: border 0.18s, box-shadow 0.18s;
+    box-shadow: none;
+  }
+  
+  .chart-card:last-child {
+    margin-bottom: 0;
+  }
+  
+  .chart-selected {
+    border: 1.5px solid #2963fa;
+    background: #f5fafd;
+    box-shadow: 0 1px 4px 0 #e2ebfd;
+  }
+  
+  .chart-type {
+    display: inline-block;
+    background: #f6f8fa;
+    color: #212529;
+    font-size: 0.89rem;
+    border-radius: 7px;
+    padding: 3px 13px;
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+  
+  .chart-trash-btn {
+    position: absolute;
+    top: 11px;
+    right: 13px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+  }
+  
+  .chart-trash-icon {
+    width: 18px;
+    height: 18px;
+    color: #bbc4d3;
+    transition: color 0.16s;
+  }
+  .chart-trash-btn:hover .chart-trash-icon {
+    color: #b91c1c;
+  }
+  
+  .chart-filename {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1px;
+  }
+  
+  .chart-details {
+    color: #878fa3;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+  }
+  
+  .chart-date {
+    color: #b1b7c6;
+    font-size: 0.91rem;
+  }
+  
+  .chart-view {
+    flex: 1;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 2px 0 #ececec;
+    padding: 26px 26px 26px 30px;
+    border: 1px solid #e7e9ed;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chart-view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  
+  .chart-view-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .chart-view-desc {
+    color: #707c9a;
+    font-size: 1rem;
+  }
+  
+  .chart-view-buttons {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .download-btn {
+    background: #fff;
+    color: #23304b;
+    border: 1px solid #e7e9ed;
+    border-radius: 9px;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 7px 19px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: background 0.18s, border 0.18s;
+  }
+  
+  .download-btn:hover {
+    background: #f0f5ff;
+    border: 1px solid #2963fa;
+    color: #2963fa;
+  }
+  
+  .download-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .chart-area {
+    flex: 1;
+    min-height: 350px;
+    margin-top: 28px;
+    background: transparent;
+    border-radius: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1020px) {
+    .dashboard-main {
+      flex-direction: column;
+    }
+    .chart-view {
+      margin-top: 18px;
+      padding: 22px 10px 22px 10px;
+    }
+    .charts-list {
+      width: 100%;
+      max-width: 650px;
+    }
+  }

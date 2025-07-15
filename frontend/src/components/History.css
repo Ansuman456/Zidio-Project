@@ -1,0 +1,266 @@
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background: #f7f8fa;
+    color: #222;
+  }
+  /* Header */
+  .header {
+    background: #fff;
+    border-bottom: 1px solid #e8eaee;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 42px 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-logo svg {
+    display: block;
+    color: #2962f3;
+  }
+  .header-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #111;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-welcome {
+    color: #525a6b;
+    font-size: 1rem;
+    margin-right: 6px;
+  }
+  .logout-btn {
+    border: 1.5px solid #e5e8f0;
+    background: #fff;
+    color: #222;
+    padding: 7px 20px 7px 16px;
+    font-size: 1.05rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, border 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    outline: none;
+  }
+  .logout-btn:hover {
+    background: #f5f7fd;
+    border: 1.5px solid #c4d9f9;
+  }
+  .logout-btn svg {
+    width: 1.15em;
+    height: 1.15em;
+    color: #64719d;
+  }
+  /* Main Content */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 18px 28px 68px;
+  }
+  .dashboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    color: #151a23;
+  }
+  .dashboard-desc {
+    font-size: 1.09rem;
+    color: #6c7486;
+    margin-bottom: 34px;
+  }
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 38px;
+  }
+  .tab {
+    flex: 1;
+    padding: 12px 0;
+    text-align: center;
+    background: #f3f6fa;
+    color: #596585;
+    border: none;
+    font-size: 1.03rem;
+    font-weight: 500;
+    border-radius: 8px 8px 8px 8px;
+    cursor: pointer;
+    transition: background 0.12s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+  .tab.active {
+    background: #fff;
+    color: #242e47;
+    box-shadow: 0 2px 8px rgba(0, 30, 110, 0.02);
+    border: 1.5px solid #e4ecfa;
+  }
+  .tab:not(:last-child) {
+    margin-right: 4px;
+  }
+  .tab svg {
+    width: 1.18em;
+    height: 1.18em;
+  }
+  /* History Section */
+  .history-section-outer {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px 0 rgba(30,70,183,0.04);
+    border: 1.2px solid #e8eeeb;
+    padding: 26px 24px 38px 24px;
+    margin-top: 8px;
+    max-width: 98vw;
+  }
+  .history-section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #141722;
+  }
+  .history-section-desc {
+    font-size: 1rem;
+    color: #7b8292;
+    margin-bottom: 19px;
+  }
+  /* Upload History Cards */
+  .history-card {
+    background: #fafdff;
+    border: 1.5px solid #e3e8ef;
+    border-radius: 11px;
+    padding: 22px 24px 19px 24px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .card-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    flex: 1;
+    min-width: 0;
+  }
+  .file-icon {
+    margin-top: 3px;
+  }
+  .file-icon svg {
+    width: 34px;
+    height: 34px;
+    color: #22b35c;
+  }
+  .file-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .file-name {
+    font-size: 1.13rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #223048;
+  }
+  .file-meta {
+    color: #68748e;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 9px;
+  }
+  .file-meta svg {
+    margin-right: 3px;
+    vertical-align: text-bottom;
+    width: 1.07em;
+    height: 1.07em;
+    color: #a7b0be;
+  }
+  .file-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .file-tag {
+    background: #f3f6fa;
+    color: #2a3548;
+    padding: 3px 12px;
+    border-radius: 16px;
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.5;
+    display: inline-block;
+  }
+  .file-tag.primary {
+    background: #eaefff;
+    color: #2e52a7;
+    font-weight: 700;
+  }
+  /* File actions */
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 7px;
+  }
+  .action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 20px 7px 16px;
+    border-radius: 8px;
+    border: 1.3px solid #e5e8f0;
+    background: #fff;
+    color: #222;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.14s, box-shadow 0.14s, border 0.14s;
+  }
+  .action-btn svg {
+    width: 1.1em; height: 1.1em;
+    color: #64719d;
+  }
+  .action-btn:hover {
+    background: #f1f8fe;
+    border-color: #b5cfff;
+  }
+  .delete-btn {
+    border: none;
+    padding: 7px 11px;
+    background: #fff;
+    border-radius: 8px;
+    color: #d15353;
+    font-size: 1.17rem;
+    cursor: pointer;
+    transition: background 0.14s;
+    outline: none;
+  }
+  .delete-btn svg {
+    color: #d15353;
+    width: 1.2em; height: 1.2em;
+  }
+  .delete-btn:hover { background: #fdf2f2;}
+  @media (max-width: 790px) {
+    .main { padding: 32px 8px 24px 8px; }
+    .history-section-outer { padding: 14px 2px 18px 2px; }
+  }

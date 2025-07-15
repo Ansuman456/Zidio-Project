@@ -1,0 +1,97 @@
+
+  
+ 
+  .upload-activity-section {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(30,34,90,0.03);
+    border: 1px solid #ececec;
+    padding: 32px 28px 16px 28px;
+    margin-top: 8px;
+    width: 1200px;
+  }
+  .upload-header {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+  .upload-desc {
+    color: #7b8191;
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+  }
+  .upload-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 22px;
+  }
+  .upload-table th {
+    text-align: left;
+    color: #5a6474;
+    font-size: 15px;
+    font-weight: 500;
+    padding-bottom: 12px;
+  }
+  .upload-table td {
+    padding: 13px 0;
+    font-size: 16px;
+    color: #232b3b;
+    border-top: 1px solid #ececec;
+    vertical-align: middle;
+  }
+  .upload-table .file-icon {
+    color: #21b67b;
+    margin-right: 6px;
+    font-size: 17px;
+  }
+  .badge-processed {
+    background: #e9f6ef;
+    color: #219944;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 16px;
+    padding: 6px 18px 5px 18px;
+    letter-spacing: .3px;
+    border: none;
+    display: inline-block;
+  }
+
+  @media (max-width: 900px) {
+    .dashboard-cards {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .container, .navbar-left, .navbar-right {
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 18px 1.5vw 0 1.5vw;
+    }
+    .upload-activity-section {
+      padding: 20px 5px;
+    }
+    .navbar-title {
+      font-size: 19px;
+    }
+    .upload-header {
+      font-size: 1.3rem;
+    }
+    .card {
+      padding: 13px 13px 10px 13px;
+    }
+    .tab {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+    .upload-table th, .upload-table td {
+      font-size: 13px;
+      padding: 7px 0;
+      min-width: 40px;
+    }
+  }

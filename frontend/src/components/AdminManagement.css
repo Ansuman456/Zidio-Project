@@ -1,0 +1,155 @@
+ /* User Mgmt Card/Table */
+ .user-mgmt-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #e7e9ed;
+    padding: 30px 20px 32px 30px;
+    box-shadow: 0 1px 2px 0 #ececec;
+    margin-bottom: 42px;
+    width: 90%;
+  }
+  
+  .user-mgmt-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .user-mgmt-desc {
+    color: #7a86a5;
+    font-size: 1.08rem;
+    margin-bottom: 23px;
+  }
+  
+  .user-mgmt-table-wrapper {
+    overflow-x: auto;
+    border-radius: 11px;
+  }
+  
+  .user-mgmt-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .user-mgmt-table th, .user-mgmt-table td {
+    text-align: left;
+    padding: 18px 14px 15px 0;
+    font-size: 1rem;
+  }
+  .user-mgmt-table th {
+    color: #7a86a5;
+    font-weight: 500;
+    padding-top: 0;
+    padding-bottom: 8px;
+  }
+  .user-mgmt-table tr {
+    border-radius: 10px;
+    background: none;
+    border-bottom: 1px solid #ececec;
+    transition: background 0.18s;
+  }
+  .user-mgmt-table tr:last-child {
+    border-bottom: none;
+  }
+  .user-mgmt-table tbody tr {
+    background: #fff;
+  }
+  .user-mgmt-table tbody tr:hover {
+    background: #f7f9fb;
+  }
+  
+  .user-mgmt-table td {
+    vertical-align: middle;
+  }
+  .user-cell .user-name {
+    font-weight: 600;
+    margin-bottom: 1px;
+  }
+  .user-cell .user-email {
+    color: #8992aa;
+    font-size: 0.98rem;
+  }
+  
+  /* User badge */
+  .role-badge {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 11px;
+    font-size: 0.93rem;
+    font-weight: 600;
+    background: #f2f5fa;
+    color: #435565;
+    margin-right: 10px;
+  }
+  .user-role {
+    background: #f2f5fa;
+    color: #435565;
+  }
+  .admin-role {
+    background: #2562fa;
+    color: #fff;
+  }
+  
+  /* Table actions */
+  
+  .table-btn {
+    border: none;
+    background: #f9fafd;
+    color: #21458b;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 9px;
+    padding: 7px 16px;
+    margin-right: 7px;
+    cursor: pointer;
+    transition: background 0.16s, color 0.16s;
+  }
+  .table-btn:hover, .table-btn:focus {
+    background: #2963fa;
+    color: #fff;
+  }
+  
+  
+  .table-icon-btn {
+    background: #fff;
+    border: 1px solid #e7e9ed;
+    border-radius: 8px;
+    padding: 7px 11px;
+    cursor: pointer;
+    transition: background 0.16s, border-color 0.16s;
+    margin-left: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .table-icon-btn:hover {
+    background: #fae3e3;
+    border-color: #e23d3d;
+  }
+  .table-icon {
+    width: 19px;
+    height: 19px;
+    color: #b1b1c6;
+    transition: color 0.15s;
+  }
+  .table-icon-btn:hover .table-icon {
+    color: #e23d3d;
+  }
+  
+  @media (max-width: 1100px) {
+    .stats-row {
+      flex-direction: row;
+      gap: 20px;
+    }
+    .stat-card {
+      min-width: 0;
+    }
+  }
+  @media (max-width: 800px) {
+    .container {
+      padding: 10px 1vw 0 1vw;
+    }
+    .user-mgmt-card {
+      padding: 15px 7px 17px 12px;
+    }
+  }
