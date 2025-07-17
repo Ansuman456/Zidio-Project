@@ -27,7 +27,7 @@ const userSchema = new Schema({
 })
 
 userSchema.pre('save', async function(next){
-    const user = this; //current user whose info is going to be saved
+    const user = this; 
     if(!user.isModified("password")){ return next();}
     try{
         const salt = await bcrypt.genSalt(10);
