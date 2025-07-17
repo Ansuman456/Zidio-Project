@@ -28,7 +28,6 @@ const Login = () => {
     <div className="container">
   <div className="login-box">
     <div className="icon">
-      {/* Simple data chart icon SVG, blue color */}
       <svg width={40} height={40} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" style={{"color":"#2962f3"}}>
         <rect x="2.5" y={15} width={3} height={5} rx="1.2" />
         <rect x="8.5" y={10} width={3} height={10} rx="1.2" />
