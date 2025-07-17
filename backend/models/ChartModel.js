@@ -7,12 +7,12 @@ const ChartSchema = new mongoose.Schema({
     required: true,
   },
   Yaxis: {
-    type: [Number], 
+    type: [Number],
     required: true,
   },
   Charttype: {
     type: String,
-    enum: ["Bar", "Line", "Pie", "Scatter", "3d Scatter"],
+    enum: ["bar", "line", "pie", "scatter", "threescatter"],
     required: true,
   },
   time: {
@@ -32,4 +32,5 @@ const ChartSchema = new mongoose.Schema({
 });
 
 const Chart = mongoose.model("Chart", ChartSchema);
+
 export default Chart;

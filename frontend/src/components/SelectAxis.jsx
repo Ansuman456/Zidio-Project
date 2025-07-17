@@ -1,15 +1,16 @@
 import { useState } from "react";
 import "../components/SelectAxis.css";
 import columnWiseData from "../sampledata/columndata";
+import axios from 'axios';
 
 const SelectAxis = () => {
   const keysarray = Object.keys(columnWiseData);
   const [xaxis, SetXaxis] = useState("");
   const [yaxis, SetYaxis] = useState("");
   const [isnum,setIsnum] = useState(true);
-  const [activechart,setActive] = useState("");
+  const [activechart,setActive] = useState(null);
 
-function handleYchange(e) {
+ function  handleYchange(e) {
   const columnName = e.target.value;
   const columnValues = columnWiseData[columnName];
 
@@ -26,6 +27,41 @@ function handleYchange(e) {
   SetYaxis(columnName);
 }
 
+
+async function handlesubmit(){
+
+    if(!xaxis||!yaxis||!activechart){
+      alert("please fill all the details");
+      return;
+    }
+
+      const xData = columnWiseData[xaxis];
+  const yData = columnWiseData[yaxis];
+  const token = localStorage.getItem("token");
+
+
+
+  try {
+       const finaldata = {
+      Xaxis: xData,
+      Yaxis: yData,
+      Charttype: activechart,
+      fileId: "64e1a1a7f3d1b4b4a7c9e123",  // 🔁 Replace with actual fileId
+      
+    };
+    const response = await axios.post('http://localhost:3000/savecharts',finaldata,
+     {  headers: {
+    Authorization: `Bearer ${token}`,
+  },}
+     );
+
+    console.log('Server response:', response.data);
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+  
+
+}
   return (
     <div>
       <link
@@ -128,7 +164,7 @@ function handleYchange(e) {
             <div style={{ "-webkit-flex": "1", "-ms-flex": "1", flex: "1" }} />
           </div>
         </div>
-        <button className={`generate-btn ${isnum? '':'restrict-submit'}`}>Generate Chart</button>
+        <button className={`generate-btn ${isnum? '':'restrict-submit'}`} onClick={handlesubmit}>Generate Chart</button>
       </div>
     </div>
   );
