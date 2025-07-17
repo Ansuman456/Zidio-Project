@@ -292,7 +292,7 @@ body {
   .generate-btn {
     width: 100%;
     padding: 15px 0 13px 0;
-    background: #9cbcfb;
+    background: #457ce9;
     color: #fff;
     border-radius: 11px;
     border: none;
@@ -305,7 +305,7 @@ body {
     box-shadow: 0 2px 5px 0 rgba(52,66,130,.05);
   }
   .generate-btn:hover {
-    background: #7297e8;
+    background: #0051ff;
   }
 
   /* Responsive */
@@ -346,3 +346,18 @@ body {
     letter-spacing: 1.5px;
     margin-top: 20px;
   }
+
+  .appear{
+    display: block;
+    color: red;
+  }
+
+  .dissapear{
+    display: none;
+  }
+
+  .restrict-submit{
+        background: #bccbe9;
+    pointer-events: none;
+  }
+  
