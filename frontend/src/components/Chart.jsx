@@ -1,5 +1,7 @@
 import '../components/Chart.css'
 
+//chart-selected
+
 const Chart = () => {
   return (
     <section class="dashboard-main">

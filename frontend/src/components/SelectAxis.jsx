@@ -1,67 +1,72 @@
 import { useState } from "react";
 import "../components/SelectAxis.css";
 import columnWiseData from "../sampledata/columndata";
-import axios from 'axios';
+import axios from "axios";
 
 const SelectAxis = () => {
   const keysarray = Object.keys(columnWiseData);
+  const [chartName, setChartName] = useState("");
   const [xaxis, SetXaxis] = useState("");
   const [yaxis, SetYaxis] = useState("");
-  const [isnum,setIsnum] = useState(true);
-  const [activechart,setActive] = useState(null);
+  const [isnum, setIsnum] = useState(true);
+  const [activechart, setActive] = useState(null);
 
- function  handleYchange(e) {
-  const columnName = e.target.value;
-  const columnValues = columnWiseData[columnName];
+  function handleYchange(e) {
+    const columnName = e.target.value;
+    const columnValues = columnWiseData[columnName];
 
-  const hasNonNumeric = columnValues.some(
-    (val) => typeof val !== "number" || isNaN(val)
-  );
+    const hasNonNumeric = columnValues.some(
+      (val) => typeof val !== "number" || isNaN(val)
+    );
 
-  if (hasNonNumeric) {
-     setIsnum(false);
+    if (hasNonNumeric) {
+      setIsnum(false);
+    } else setIsnum(true);
+
+    SetYaxis(columnName);
   }
 
-  else setIsnum(true);
-
-  SetYaxis(columnName);
-}
-
-
-async function handlesubmit(){
-
-    if(!xaxis||!yaxis||!activechart){
+  async function handlesubmit() {
+    if (!xaxis || !yaxis || !activechart) {
       alert("please fill all the details");
       return;
     }
 
-      const xData = columnWiseData[xaxis];
-  const yData = columnWiseData[yaxis];
-  const token = localStorage.getItem("token");
+    const xData = columnWiseData[xaxis];
+    const yData = columnWiseData[yaxis];
+    const token = localStorage.getItem("token");
 
+    try {
+      const finaldata = {
+        ChartName: chartName,
+        Xname: xaxis,
+        Yname: yaxis,
+        Xaxis: xData,
+        Yaxis: yData,
+        Charttype: activechart,
+        fileId: "64e1a1a7f3d1b4b4a7c9e124", // 🔁 Replace with actual fileId
+      };
+      const response = await axios.post(
+        "http://localhost:3000/savecharts",
+        finaldata,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
+      console.log("Server response:", response.data);
 
-  try {
-       const finaldata = {
-      Xaxis: xData,
-      Yaxis: yData,
-      Charttype: activechart,
-      fileId: "64e1a1a7f3d1b4b4a7c9e123",  // 🔁 Replace with actual fileId
-      
-    };
-    const response = await axios.post('http://localhost:3000/savecharts',finaldata,
-     {  headers: {
-    Authorization: `Bearer ${token}`,
-  },}
-     );
-
-    console.log('Server response:', response.data);
-  } catch (error) {
-    console.error('Error sending data:', error);
+      setActive(null);
+setChartName("");
+SetXaxis("");
+SetYaxis("");
+    } 
+    catch (error) {
+      console.error("Error sending data:", error);
+    }
   }
-  
-
-}
   return (
     <div>
       <link
@@ -93,6 +98,20 @@ async function handlesubmit(){
       <div className="config-section">
         <h2>Configure Chart</h2>
         <p>Select columns for your chart axes and choose visualization type</p>
+        <div className="chartname">
+          <label htmlFor="chartname" className="config-label">
+            Chart Name
+          </label>
+          <input
+            placeholder="Enter Your Chart's Name"
+            className="chart-name-input"
+            type="text"
+            value={chartName}
+            onChange={(e) => {
+              setChartName(e.target.value);
+            }}
+          />
+        </div>
         <div className="config-row">
           <div className="config-col">
             <label className="config-label" htmlFor="xaxis">
@@ -101,9 +120,10 @@ async function handlesubmit(){
             <select
               id="xaxis"
               className="config-select"
+              value={xaxis}
               onChange={(e) => SetXaxis(e.target.value)}
             >
-              <option>Select X-axis column</option>
+              <option value="">Select X-axis column</option>
               {keysarray
                 .filter((option) => {
                   return option !== yaxis;
@@ -120,18 +140,21 @@ async function handlesubmit(){
             <select
               id="yaxis"
               className="config-select"
-              onChange={(e)=>handleYchange(e)}
+              value={yaxis}
+              onChange={(e) => handleYchange(e)}
             >
-              <option>Select Y-axis column</option>
+              <option value="">Select Y-axis column</option>
               {keysarray
                 .filter((option) => {
                   return option !== xaxis;
                 })
                 .map((option) => {
-                  return <option key={option} >{option}</option>;
+                  return <option key={option}>{option}</option>;
                 })}
             </select>
-            <span className={`${isnum? 'dissapear':'appear'}`}>Y axis Should only contain numerical values</span>
+            <span className={`${isnum ? "dissapear" : "appear"}`}>
+              Y axis Should only contain numerical values
+            </span>
           </div>
         </div>
         <div className="chart-type-section">
@@ -139,32 +162,62 @@ async function handlesubmit(){
           <br />
           <br />
           <div className="chart-types-row">
-            <button className={`chart-type-btn ${(activechart==='bar'?'active':'')}`} onClick={()=>setActive("bar")}>
+            <button
+              className={`chart-type-btn ${
+                activechart === "bar" ? "active" : ""
+              }`}
+              onClick={() => setActive("bar")}
+            >
               <i className="fa-solid fa-chart-column" />
               Bar Chart
             </button>
-            <button className={`chart-type-btn ${(activechart==='line'?'active':'')}`} onClick={()=>setActive("line")}>
+            <button
+              className={`chart-type-btn ${
+                activechart === "line" ? "active" : ""
+              }`}
+              onClick={() => setActive("line")}
+            >
               <i className="fa-solid fa-chart-line" />
               Line Chart
             </button>
-            <button className={`chart-type-btn ${(activechart==='pie'?'active':'')}`} onClick={()=>setActive("pie")}>
+            <button
+              className={`chart-type-btn ${
+                activechart === "pie" ? "active" : ""
+              }`}
+              onClick={() => setActive("pie")}
+            >
               <i className="fa-solid fa-chart-pie" />
               Pie Chart
             </button>
           </div>
-          <div className="chart-types-row" >
-            <button className={`chart-type-btn ${(activechart==='scatter'?'active':'')}`} onClick={()=>setActive("scatter")}>
+          <div className="chart-types-row">
+            <button
+              className={`chart-type-btn ${
+                activechart === "scatter" ? "active" : ""
+              }`}
+              onClick={() => setActive("scatter")}
+            >
               <i class="fa-solid fa-chart-line"></i>
               Scatter Plot
             </button>
-            <button className={`chart-type-btn ${(activechart==='threescatter'?'active':'')}`} onClick={()=>setActive("threescatter")}>
+            <button
+              className={`chart-type-btn ${
+                activechart === "threescatter" ? "active" : ""
+              }`}
+              onClick={() => setActive("threescatter")}
+            >
               <i className="fa-solid fa-braille" />
               3D Scatter
             </button>
             <div style={{ "-webkit-flex": "1", "-ms-flex": "1", flex: "1" }} />
           </div>
         </div>
-        <button className={`generate-btn ${isnum? '':'restrict-submit'}`} onClick={handlesubmit}>Generate Chart</button>
+        <button
+          className={`generate-btn ${isnum ? "" : "restrict-submit"}`}
+          onClick={handlesubmit}
+        >
+          Generate Chart
+        </button>
       </div>
     </div>
   );

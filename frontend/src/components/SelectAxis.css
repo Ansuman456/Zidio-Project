@@ -252,6 +252,25 @@ body {
     background-repeat: no-repeat;
     background-position: right 17px center;
   }
+
+  .chartname{
+  
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chart-name-input{
+        border: 1.5px solid #dadee8;
+    border-radius: 8px;
+    background: #f9fbfc;
+    padding: 13px 14px;
+    font-size: 1rem;
+    color: #44526c;
+    outline: none;
+    width: 40%;
+  }
+
+
   /* CHART TYPE */
   .chart-type-section {
     margin-top: 13px;

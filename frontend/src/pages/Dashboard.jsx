@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
 
+
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("default");
   const navigate = useNavigate();
@@ -39,8 +41,8 @@ const Dashboard = () => {
   if (loading) return <p className='loading'>Loading...</p>;
 
   const handlelogout = ()=>{
-    localStorage.removeItem('token');
-    navigate('/login');
+          localStorage.removeItem('token');
+  navigate('/login');
   }
   
 
@@ -61,7 +63,7 @@ const Dashboard = () => {
       <span className="header-title">DataViz Pro</span>
     </div>
     <div className="header-right">
-      <span className="header-welcome">Welcome, nskdjvbkjsdn</span>
+      <span className="header-welcome">Welcome</span>
       <button className="logout-btn" onClick={handlelogout}>
         {/* LoginOut SVG */}
         <svg fill="none" viewBox="0 0 20 20">

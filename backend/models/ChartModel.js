@@ -2,8 +2,20 @@ import mongoose from "mongoose";
 import moment from "moment";
 
 const ChartSchema = new mongoose.Schema({
+  ChartName: {
+    type: String,
+    required: true,
+  },
+  Xname: {
+    type: String,
+    required: true,
+  },
+  Yname: {
+    type: String,
+    required: true,
+  },
   Xaxis: {
-    type: [mongoose.Schema.Types.Mixed],
+    type: [String],
     required: true,
   },
   Yaxis: {

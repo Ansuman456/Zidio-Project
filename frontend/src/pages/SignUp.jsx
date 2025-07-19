@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../pages/SignUp.css'
 
 const SignUp = () => {
+ 
   const [data,setData] = useState({name:'',email:'',password:''})
   const navigate = useNavigate();
 
@@ -20,6 +21,8 @@ const SignUp = () => {
     }
   
   }
+
+
   return (
         <div>
         <div className="container">

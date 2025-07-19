@@ -10,7 +10,7 @@ import Dashboard from './pages/Dashboard';
 import DragNDrop from './components/DragNDrop';
 import SelectAxis from './components/SelectAxis';
 import History from './components/history';
-import Chart from './components/chart';
+import Chart from './components/Chart';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Admin from './pages/Admin';
 import AdminManagement from './components/AdminManagement';
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Dashboard />, // ✅ still renders the layout
+        element: <Dashboard/>, // ✅ still renders the layout
         children: [
           {
             path: "",
