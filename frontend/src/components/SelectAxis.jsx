@@ -10,6 +10,7 @@ const SelectAxis = () => {
   const [yaxis, SetYaxis] = useState("");
   const [isnum, setIsnum] = useState(true);
   const [activechart, setActive] = useState(null);
+  const [scattercheck,setCheck] = useState(true);
 
   function handleYchange(e) {
     const columnName = e.target.value;
@@ -25,6 +26,26 @@ const SelectAxis = () => {
 
     SetYaxis(columnName);
   }
+
+function handlescatter() {
+  setActive("scatter");
+  const xValues = columnWiseData[xaxis];
+  const yValues = columnWiseData[yaxis];
+
+  const xInvalid = xValues?.some(val => typeof val !== "number" || isNaN(val));
+  const yInvalid = yValues?.some(val => typeof val !== "number" || isNaN(val));
+
+  if (xInvalid || yInvalid) {
+    setCheck(false);
+  } else {
+    setCheck(true);
+    
+  }
+}
+
+
+
+
 
   async function handlesubmit() {
     if (!xaxis || !yaxis || !activechart) {
@@ -121,7 +142,7 @@ SetYaxis("");
               id="xaxis"
               className="config-select"
               value={xaxis}
-              onChange={(e) => SetXaxis(e.target.value)}
+              onChange={(e) => {SetXaxis(e.target.value);handleXchange}}
             >
               <option value="">Select X-axis column</option>
               {keysarray
@@ -166,7 +187,7 @@ SetYaxis("");
               className={`chart-type-btn ${
                 activechart === "bar" ? "active" : ""
               }`}
-              onClick={() => setActive("bar")}
+              onClick={() => {setActive("bar");setCheck(true)}}
             >
               <i className="fa-solid fa-chart-column" />
               Bar Chart
@@ -175,7 +196,7 @@ SetYaxis("");
               className={`chart-type-btn ${
                 activechart === "line" ? "active" : ""
               }`}
-              onClick={() => setActive("line")}
+              onClick={() => {setActive("line");setCheck(true)}}
             >
               <i className="fa-solid fa-chart-line" />
               Line Chart
@@ -184,36 +205,30 @@ SetYaxis("");
               className={`chart-type-btn ${
                 activechart === "pie" ? "active" : ""
               }`}
-              onClick={() => setActive("pie")}
+              onClick={() => {setActive("pie");setCheck(true)}}
             >
               <i className="fa-solid fa-chart-pie" />
               Pie Chart
             </button>
-          </div>
-          <div className="chart-types-row">
-            <button
+              <button
               className={`chart-type-btn ${
                 activechart === "scatter" ? "active" : ""
               }`}
-              onClick={() => setActive("scatter")}
+              onClick={
+               handlescatter
+              }
             >
               <i class="fa-solid fa-chart-line"></i>
               Scatter Plot
+              <span className={`${scattercheck ? "dissapear" : "appear"}`}>
+              Both X and Y axis should have numeric values for scatter graph
+            </span>
             </button>
-            <button
-              className={`chart-type-btn ${
-                activechart === "threescatter" ? "active" : ""
-              }`}
-              onClick={() => setActive("threescatter")}
-            >
-              <i className="fa-solid fa-braille" />
-              3D Scatter
-            </button>
-            <div style={{ "-webkit-flex": "1", "-ms-flex": "1", flex: "1" }} />
           </div>
+          
         </div>
         <button
-          className={`generate-btn ${isnum ? "" : "restrict-submit"}`}
+          className={`generate-btn ${isnum ? "" : "restrict-submit"} ${scattercheck ? "" : "restrict-submit"}`}
           onClick={handlesubmit}
         >
           Generate Chart

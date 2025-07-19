@@ -183,15 +183,14 @@ body {
     min-height: 85px;
     transition: border 0.18s, box-shadow 0.18s;
     box-shadow: none;
+    transition: all 0.1s linear;
   }
 
     .chart-card:hover {
-     
     border: 1.5px solid #2963fa;
     background: #f5fafd;
     box-shadow: 0 1px 4px 0 #e2ebfd;
-      
-
+    transform: scale(1.1);
   }
   
   .chart-card:last-child {
@@ -202,6 +201,13 @@ body {
     border: 1.5px solid #0045f3;
     background: #52b6f4;
     box-shadow: 0 1px 4px 0 #e2ebfd;
+     border-radius: 12px;
+    padding: 18px 16px 11px 16px;
+    margin-bottom: 16px;
+    position: relative;
+    min-height: 85px;
+    transition: border 0.18s, box-shadow 0.18s;
+    box-shadow: none;
   }
 
     .chart-selected div{
@@ -316,12 +322,15 @@ body {
   
   .chart-area {
     flex: 1;
-    min-height: 350px;
+    height: 450px;
     margin-top: 28px;
     background: transparent;
     border-radius: 10px;
   }
-  
+  .chart-canvas{
+    min-height: 450px;
+    max-height: 450px;
+  }
   /* Responsive Design */
   @media (max-width: 1020px) {
     .dashboard-main {
