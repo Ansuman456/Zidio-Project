@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors'
-import upload from './utils/multerconfig.js'
 import  AllRoutes  from './routes/AllRoutes.js';
 import connectDB from './models/db.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const app = express();
@@ -22,6 +23,6 @@ connectDB();
 //     res.status(200).json({'success': true, 'data': 'connected to backend'})
 // })
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log("server connected")
 })

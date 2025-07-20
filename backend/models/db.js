@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const connectDB = async() =>{
     try {
-        const conn = await mongoose.connect(`mongodb+srv://ansumanpadhy28:yTLaHRq4YTPmWF9k@myfirstcluster.prwirgl.mongodb.net/`, 
+        const conn = await mongoose.connect(process.env.MONGO_URL, 
         {
           useNewUrlParser: true,
         });
