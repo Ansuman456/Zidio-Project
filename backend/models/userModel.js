@@ -23,6 +23,10 @@ const userSchema = new Schema({
     uploadsNo:{
         type:Number,
         default:0
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
     }
 })
 

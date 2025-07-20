@@ -1,0 +1,547 @@
+/* Hero.css - Scoped Styles */
+.dataviz-hero-container {
+  width: 100%;
+  min-height: 400vh;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+  color: #1a1a2e;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Header Styles */
+.dataviz-hero-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.dataviz-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dataviz-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.dataviz-logo span {
+  color: #4361ee;
+}
+
+.dataviz-nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.dataviz-nav-links a {
+  text-decoration: none;
+  color: #1a1a2e;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.dataviz-nav-links a:hover {
+  color: #4361ee;
+}
+
+.dataviz-header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.dataviz-login-btn, .dataviz-signup-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dataviz-login-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #1a1a2e;
+}
+
+.dataviz-signup-btn {
+  background: #4361ee;
+  border: 1px solid #4361ee;
+  color: white;
+}
+
+.dataviz-signup-btn:hover {
+  background: #3f37c9;
+  border-color: #3f37c9;
+}
+
+/* Hero Section */
+.dataviz-hero-section {
+  padding: 12rem 2rem 8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.dataviz-hero-content {
+  max-width: 600px;
+}
+
+.dataviz-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #1a1a2e;
+}
+
+.dataviz-hero-title span {
+  color: #4361ee;
+}
+
+.dataviz-hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #5a6a7e;
+  margin-bottom: 2.5rem;
+}
+
+.dataviz-cta-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dataviz-primary-cta {
+  background: #4361ee;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
+}
+
+.dataviz-primary-cta:hover {
+  background: #3f37c9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+}
+
+.dataviz-secondary-cta {
+  background: white;
+  color: #4361ee;
+  border: 1px solid #4361ee;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.dataviz-secondary-cta:hover {
+  background: #f5f7ff;
+  transform: translateY(-2px);
+}
+
+.dataviz-trust-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dataviz-badge {
+  background: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dataviz-hero-illustration {
+  position: relative;
+  height: 500px;
+}
+
+.dataviz-floating-chart {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: dataviz-float 6s ease-in-out infinite;
+}
+
+.dataviz-floating-chart svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.dataviz-chart1 {
+  background: linear-gradient(135deg, #4361ee 0%, #4895ef 100%);
+  top: 0;
+  left: 0;
+}
+
+.dataviz-chart2 {
+  background: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+  top: 60px;
+  right: 0;
+  animation-delay: 1s;
+}
+
+.dataviz-chart3 {
+  background: linear-gradient(135deg, #4cc9f0 0%, #3f37c9 100%);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 2s;
+}
+
+.dataviz-main-dashboard-preview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.dataviz-features-section {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dataviz-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.dataviz-section-subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #5a6a7e;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.dataviz-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.dataviz-feature-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.dataviz-feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dataviz-feature-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Feature icon colors */
+.dataviz-feature-icon-0 {
+  background-color: #FF6B6B20;
+  color: #FF6B6B;
+}
+.dataviz-feature-icon-1 {
+  background-color: #4ECDC420;
+  color: #4ECDC4;
+}
+.dataviz-feature-icon-2 {
+  background-color: #45B7D120;
+  color: #45B7D1;
+}
+.dataviz-feature-icon-3 {
+  background-color: #A37EBD20;
+  color: #A37EBD;
+}
+.dataviz-feature-icon-4 {
+  background-color: #FFBE0B20;
+  color: #FFBE0B;
+}
+.dataviz-feature-icon-5 {
+  background-color: #FB560720;
+  color: #FB5607;
+}
+
+.dataviz-feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.dataviz-feature-card p {
+  color: #5a6a7e;
+  line-height: 1.6;
+}
+
+/* How It Works Section */
+.dataviz-how-it-works {
+  padding: 8rem 2rem;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+.dataviz-steps-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dataviz-step {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.dataviz-step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #4361ee;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.dataviz-step-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.dataviz-step-content p {
+  color: #5a6a7e;
+  line-height: 1.6;
+}
+
+.dataviz-step-illustration {
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Examples Section */
+.dataviz-examples-section {
+  padding: 8rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dataviz-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.dataviz-example-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.dataviz-example-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dataviz-example-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #1a1a2e;
+}
+
+.dataviz-example-preview {
+  height: 200px;
+  border-radius: 12px;
+}
+
+/* Example card backgrounds */
+.dataviz-example-0 .dataviz-example-preview {
+  background: linear-gradient(135deg, #4361ee20 0%, #4895ef20 100%);
+}
+.dataviz-example-1 .dataviz-example-preview {
+  background: linear-gradient(135deg, #4cc9f020 0%, #3f37c920 100%);
+}
+.dataviz-example-2 .dataviz-example-preview {
+  background: linear-gradient(135deg, #f7258520 0%, #b5179e20 100%);
+}
+.dataviz-example-3 .dataviz-example-preview {
+  background: linear-gradient(135deg, #4cc9f020 0%, #3f37c920 100%);
+}
+
+/* Final CTA */
+.dataviz-final-cta {
+  padding: 8rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+  color: white;
+}
+
+.dataviz-final-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.dataviz-final-cta p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+.dataviz-large-cta {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+}
+
+.footerEdit{
+  width: 100%;
+  height: 40px;
+  background-color: #3f37c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.imageEdit{
+  display: inline-block;
+  height: 100%;
+  width: 90%;
+  object-fit: contain;
+}
+
+.link{
+  text-decoration: none;
+}
+
+/* Animations */
+@keyframes dataviz-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dataviz-hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .dataviz-hero-content {
+    margin: 0 auto;
+  }
+  
+  .dataviz-hero-illustration {
+    margin-top: 4rem;
+  }
+  
+  .dataviz-cta-container {
+    justify-content: center;
+  }
+  
+  .dataviz-trust-badges {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .dataviz-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .dataviz-header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .dataviz-nav-links {
+    gap: 1rem;
+  }
+  
+  .dataviz-step {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .dataviz-step-number {
+    margin: 0 auto;
+  }
+  
+  .dataviz-step-illustration {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dataviz-hero-title {
+    font-size: 2rem;
+  }
+  
+  .dataviz-features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dataviz-cta-container {
+    flex-direction: column;
+  }
+}

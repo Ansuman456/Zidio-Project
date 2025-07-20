@@ -21,7 +21,7 @@ const loginController = async(req,res)=>{
         role: user.role
     }
     const Token = generateToken(payload);
-    res.status(201).json({success:true,token:Token})
+    res.status(201).json({success:true,token:Token, role: user.role})
     }catch(err){
         console.log(err)
     }

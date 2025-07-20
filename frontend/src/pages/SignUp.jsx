@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios';
 import '../pages/SignUp.css'
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignUp = () => {
   const [data,setData] = useState({name:'',email:'',password:''})
@@ -13,7 +14,10 @@ const SignUp = () => {
       const response = await axios.post('http://localhost:3000/signup', data)
       console.log(response);
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      toast("Signup Successfull",{autoClose: 2000});
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000); // 2000ms = 2 seconds
     }catch(err){
       console.log('Error came!!');
       console.error(err);
@@ -53,6 +57,7 @@ const SignUp = () => {
     </div>
   </div>
 </div>
+<ToastContainer position="bottom-right" />
   </div>
   )
 }

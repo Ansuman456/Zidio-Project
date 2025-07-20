@@ -3,22 +3,32 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '../pages/Login.css'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
 
   const [data,setData] = useState({email:'',password:'',checkbox:''})
+  const [error, setError] = useState('')
   const navigate = useNavigate();
   
   const handleSubmit = async(e) =>{
     e.preventDefault();
+    
     try{
       const response = await axios.post('http://localhost:3000/login', data)
       console.log(response);
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      localStorage.setItem('role', response.data.role);
+      toast("Login Successfull",{autoClose: 2000});
+      setTimeout(() => {
+        if(response.data.role=='user')navigate('/dashboard');
+        else if(response.data.role=='admin')navigate('/admin');
+      }, 2000); // 2000ms = 2 seconds
+      
     }catch(err){
       console.log('Error came!!');
       console.error(err);
+      setError('Invalid credentials');
     }
   
   }
@@ -46,20 +56,17 @@ const Login = () => {
         <label className="form-label" htmlFor="password">Password</label>
         <input className="form-input" id="password" name='password' type="password" value={data.password} onChange={(e)=>setData({...data,password:e.target.value})} placeholder="Enter your password" autoComplete="current-password" />
       </div>
-      <div className="checkbox-row">
-        <label className="switch">
-          <input type="checkbox" name='checkbox' checked={data.checkbox} onChange={(e) => setData({ ...data, checkbox: e.target.checked })} />
-          <span className="slider" />
-        </label>
-        <span className="checkbox-label">Login as Admin</span>
-      </div>
+      
+      <div className='danger'>{error}</div>
       <button type="submit" className="login-btn" >Login</button>
     </form>
     <div className="signup">
       Don't have an account? <Link className='login' to='/signup'>Sign up</Link>
     </div>
   </div>
+  <ToastContainer position="bottom-right" />
 </div>
+
 
   )
 }

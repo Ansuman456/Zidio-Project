@@ -9,6 +9,8 @@ const Dashboard = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("default");
+  const [name,setName] = useState('')
+  const [checkUser, setCheckUser] = useState('')
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
@@ -20,7 +22,9 @@ const Dashboard = () => {
             Authorization: `Bearer ${token}`,
           },
         }); 
-        console.log(response.response);
+        console.log(response); 
+        setCheckUser(response.data.message)
+        setName(response.data.name)
         setLoading(false);
         }catch(err){
           console.log(err);
@@ -31,11 +35,16 @@ const Dashboard = () => {
     fetchData();
   }, []);
   
-  console.log(error)
+  
   if (error=="Unauthorized, please login with correct credentials or create an account") return <div> <p className='loading'>Unauthorized or token expired, please login with correct credentials or create an account</p> 
    <button className="logout-btn">
         <Link to="/login">Login</Link>
       </button></div> 
+
+if(error=='You are not authorized to access this page') return <div><p>You are not authorized to access this page</p></div>
+
+    if(checkUser=='You are not authorized to access this page') return <div><p>You are not authorized to access this page</p></div>
+
   if (loading) return <p className='loading'>Loading...</p>;
 
   const handlelogout = ()=>{
@@ -61,7 +70,7 @@ const Dashboard = () => {
       <span className="header-title">DataViz Pro</span>
     </div>
     <div className="header-right">
-      <span className="header-welcome">Welcome, nskdjvbkjsdn</span>
+      <span className="header-welcome">Welcome, {name}</span>
       <button className="logout-btn" onClick={handlelogout}>
         {/* LoginOut SVG */}
         <svg fill="none" viewBox="0 0 20 20">

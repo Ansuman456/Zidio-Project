@@ -1,8 +1,59 @@
 import '../pages/Admin.css'
 import { Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Admin = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("default");
+  const [stat, setStat] = useState({})
+  const [name,setName] = useState('')
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const response = await axios.get('http://localhost:3000/admin', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }); 
+        console.log(response); 
+        setStat({
+          "totalUsers": response.data.totalUsers,
+          "totalFiles": response.data.totalUploads,
+          "totalCharts": response.data.chartUsage,
+        })
+        setName(response.data.name)
+        console.log(stat)
+        setLoading(false);
+        }catch(err){
+          console.log(err);
+          console.log(err.response.data.message)
+          setError( err.response.data.message)
+        }
+    };
+    fetchData();
+  }, []);
+
+  if (error=="Unauthorized, please login with correct credentials or create an account") return <div> <p className='loading'>{error} or token expired, please login with correct credentials or create an account</p> 
+   <button className="logout-btn">
+        <Link to="/login">Login</Link>
+      </button></div> 
+
+    if(error=='You are not authorized to access this page') return <div><p>You are not authorized to access this page</p></div>
+
+  if (loading) return <p className='loading'>Loading...</p>;
+
+  const handlelogout = ()=>{
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
+
+
   return (
     <div>
   <header className="navbar">
@@ -13,8 +64,8 @@ const Admin = () => {
       <span className="logo-text">Admin Dashboard</span>
     </div>
     <div className="nav-right">
-      <span className="user-welcome">Welcome, geniusbackbencher98</span>
-      <button className="logout-btn">
+      <span className="user-welcome">Welcome, {name}</span>
+      <button className="logout-btn" onClick={handlelogout}>
         <svg xmlns="http://www.w3.org/2000/svg" className="logout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1" />
         </svg>
@@ -31,8 +82,7 @@ const Admin = () => {
             <path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-8a4 4 0 11-8 0 4 4 0 018 0zm6 4a4 4 0 10-8 0 4 4 0 008 0z" />
           </svg>
         </div>
-        <div className="stat-main">3</div>
-        <div className="stat-desc">0 active this week</div>
+        <div className="stat-main">{stat.totalUsers}</div>
       </div>
       <div className="stat-card">
         <div className="stat-header">
@@ -42,7 +92,7 @@ const Admin = () => {
             <path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3-3 3-3-3" />
           </svg>
         </div>
-        <div className="stat-main">5</div>
+        <div className="stat-main">{stat.totalFiles}</div>
         <div className="stat-desc">Excel files processed</div>
       </div>
       <div className="stat-card">
@@ -53,24 +103,14 @@ const Admin = () => {
             <circle cx={12} cy={7} r={4} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <div className="stat-main">2</div>
+        <div className="stat-main">{stat.totalCharts}</div>
         <div className="stat-desc">Visualizations generated</div>
       </div>
-      <div className="stat-card">
-        <div className="stat-header">
-          Platform Usage
-          <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8" />
-          </svg>
-        </div>
-        <div className="stat-main"><span className="usage-pct">40%</span></div>
-        <div className="stat-desc">Upload to chart ratio</div>
-      </div>
     </div>
-    <nav className="tabs-nav">
+    {/* <nav className="tabs-nav">
       <Link to='/admin' className="tab-btn ">User Management</Link>
       <Link to='/admin/activity' className="tab-btn">Upload Activity</Link>
-    </nav>
+    </nav> */}
     <Outlet/>
   </main>
  

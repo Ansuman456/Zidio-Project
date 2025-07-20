@@ -1,5 +1,4 @@
 import './App.css'
-import * as ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,14 +8,19 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import DragNDrop from './components/DragNDrop';
 import SelectAxis from './components/SelectAxis';
-import History from './components/history';
-import Chart from './components/chart';
+import History from './components/History.jsx';
+import Chart from './components/Chart.jsx';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Admin from './pages/Admin';
 import AdminManagement from './components/AdminManagement';
-import AdminActivity from './components/AdminActivity';
+import ErrorPage from './pages/ErrorPage.jsx';
+import Heropage from './pages/Heropage.jsx';
 
 const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Heropage />,
+  },
   {
     path: "/signup",
     element: <SignUp/>
@@ -43,7 +47,8 @@ const router = createBrowserRouter([
           },
           {
             path: "configure",
-            element: <SelectAxis />
+            element: <SelectAxis />,
+            errorElement: <ErrorPage />
           },
           {
             path: "history",
@@ -68,10 +73,6 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <AdminManagement/>
-          },
-          {
-            path: "activity",
-            element: <AdminActivity />
           }
         ]
       },

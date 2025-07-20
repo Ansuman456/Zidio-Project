@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import { setChartData, setFile } from '../slices/fileSlice';
 import '../components/DragNDrop.css'
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const DragNDrop = () => {
 
   /* testing */
 // const [file,setFile] = useState(null);
+const dispatch = useDispatch();
+const navigate = useNavigate();
 
 const handleFileChange = async (e) => {
   const file =  e.target.files[0]
@@ -15,15 +21,24 @@ const handleFileChange = async (e) => {
   const formData = new FormData();
   formData.append('excelFile', file);   // append the file
   try {
-
-    const response = await axios.post('http://localhost:3000', formData, {
+    const token = localStorage.getItem('token');
+    const response = await axios.post('http://localhost:3000/dashboard', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+         Authorization: `Bearer ${token}`,
       }
     });
      console.log(response.data);
+     dispatch(setChartData(response.data.excelData))
+     dispatch(setFile(response.data.filedata));
+
+     toast("Data Parsed Successfully",{autoClose: 2000});
+      setTimeout(() => {
+        navigate('/dashboard/configure');
+      }, 2000); // 2000ms = 2 seconds
   } catch (err) {
-    console.log('Error uploading file')
+    console.log(err);
+    toast("Error in Data Parsing",{autoClose: 2000});
   } 
 };
 
@@ -56,6 +71,7 @@ const handleFileChange = async (e) => {
         </form>
       </div>
       </div>
+      <ToastContainer position="bottom-right" />
     </div>
    
     
