@@ -22,7 +22,7 @@ const handleFileChange = async (e) => {
   formData.append('excelFile', file);   // append the file
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.post('http://localhost:3000/dashboard', formData, {
+    const response = await axios.post('https://zidio-project-aidj.onrender.com/dashboard', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
          Authorization: `Bearer ${token}`,

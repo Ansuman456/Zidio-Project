@@ -14,7 +14,7 @@ const AdminManagement = () => {
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const response = await axios.get('http://localhost:3000/adminManagement', {
+        const response = await axios.get('https://zidio-project-aidj.onrender.com/adminManagement', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ const AdminManagement = () => {
 
   const handleDelete = async(id)=>{
     try{
-      const response = await axios.delete(`http://localhost:3000/adminManagement/${id}`,{
+      const response = await axios.delete(`https://zidio-project-aidj.onrender.com/adminManagement/${id}`,{
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -59,7 +59,7 @@ const AdminManagement = () => {
   const handleMakeAdmin = async(id)=>{
     console.log(id)
     try{
-      const response = await axios.put(`http://localhost:3000/makeAdmin/${id}`,{},{
+      const response = await axios.put(`https://zidio-project-aidj.onrender.com/makeAdmin/${id}`,{},{
           headers: {
             Authorization: `Bearer ${token}`,
           },

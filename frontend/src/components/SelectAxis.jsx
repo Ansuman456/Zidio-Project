@@ -75,7 +75,7 @@ function handlescatter() {
         fileId: fileData._id, // 🔁 Replace with actual fileId
       };
       const response = await axios.post(
-        "http://localhost:3000/savecharts",
+        "https://zidio-project-aidj.onrender.com/savecharts",
         finaldata,
         {
           headers: {

@@ -10,8 +10,8 @@ const SignUp = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
-    try{
-      const response = await axios.post('http://localhost:3000/signup', data)
+    try{  
+      const response = await axios.post('https://zidio-project-aidj.onrender.com/signup', data)
       console.log(response);
       localStorage.setItem('token', response.data.token);
       toast("Signup Successfull",{autoClose: 2000});

@@ -12,7 +12,7 @@ const History = () => {
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const response = await axios.get('http://localhost:3000/history', {
+        const response = await axios.get('https://zidio-project-aidj.onrender.com/history', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -32,7 +32,7 @@ const History = () => {
   const handleDelete = async (fileId) => {
     const token = localStorage.getItem("token");
     try {
-      const responce = await axios.delete(`http://localhost:3000/history/${fileId}`, {
+      const responce = await axios.delete(`https://zidio-project-aidj.onrender.com/history/${fileId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

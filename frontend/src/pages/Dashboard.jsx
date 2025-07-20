@@ -17,7 +17,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const response = await axios.get('http://localhost:3000/dashboard', {
+        const response = await axios.get('https://zidio-project-aidj.onrender.com/dashboard', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

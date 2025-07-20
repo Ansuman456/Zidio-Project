@@ -18,7 +18,7 @@ const Chart = () => {
     const fetchCharts = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get("http://localhost:3000/getcharts", {
+        const response = await axios.get("https://zidio-project-aidj.onrender.com/getcharts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -140,7 +140,7 @@ const Chart = () => {
   const handleDelete = async (chartId) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:3000/deletechart/${chartId}`, {
+      await axios.delete(`https://zidio-project-aidj.onrender.com/deletechart/${chartId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

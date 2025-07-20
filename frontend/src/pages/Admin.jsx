@@ -16,7 +16,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const response = await axios.get('http://localhost:3000/admin', {
+        const response = await axios.get('https://zidio-project-aidj.onrender.com/admin', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

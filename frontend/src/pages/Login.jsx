@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     
     try{
-      const response = await axios.post('http://localhost:3000/login', data)
+      const response = await axios.post('https://zidio-project-aidj.onrender.com/login', data)
       console.log(response);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', response.data.role);
