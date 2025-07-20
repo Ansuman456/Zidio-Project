@@ -16,6 +16,9 @@ import { makeAdminController } from "../controllers/adminControllers.js"
 
 const router = express.Router()
 
+router.get("/", (req,res)=>{
+    res.send("Welcome to the dashboard")
+})
 router.post('/login',loginController);
 router.post('/signup', signupController);
 router.get('/dashboard', JWTAuthMiddleware,userCheckMiddleware, dashboardgetController)
