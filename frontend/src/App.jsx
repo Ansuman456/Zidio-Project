@@ -15,8 +15,13 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import Admin from './pages/Admin';
 import AdminManagement from './components/AdminManagement';
 import AdminActivity from './components/AdminActivity';
+import HeroPage from './components/HeroPage';
 
 const router = createBrowserRouter([
+  {
+      path: "/",
+    element: <HeroPage/>
+  },
   {
     path: "/signup",
     element: <SignUp/>
@@ -31,11 +36,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <ProtectedRoute />, // ✅ guard the whole dashboard
+    element: <ProtectedRoute />, 
     children: [
       {
         path: "",
-        element: <Dashboard/>, // ✅ still renders the layout
+        element: <Dashboard/>, 
         children: [
           {
             path: "",

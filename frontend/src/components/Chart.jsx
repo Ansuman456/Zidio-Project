@@ -30,7 +30,7 @@ const Chart = () => {
     fetchCharts();
   }, []);
 
-  // 🟦 Render Chart When a Chart is Selected
+
   useEffect(() => {
     if (!selectedChart || !chartRef.current) return;
 
