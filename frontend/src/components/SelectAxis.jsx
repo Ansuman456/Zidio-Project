@@ -114,9 +114,6 @@ function handlescatter() {
             <span className="filename-main">{fileData.fileName}</span>
             <span className="file-detail-meta">({fileData.noOfRow} rows, {fileData.noOfColumn} columns)</span>
           </div>
-          <button className="clear-btn">
-            <i className="fa-solid fa-xmark" /> Clear
-          </button>
         </div>
         <br />
         <div className="file-cols">
